@@ -4,7 +4,7 @@ from PIL import Image, ImageTk
 
 LARGEFONT = ("Verdana", 35)
 
-players = 4
+players = 3
 player_names = ["Rebecca", "Charlotte", "Tonko", "Tobias"]
 
 
@@ -53,12 +53,11 @@ class StartPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        # label of frame Layout 2
-        label = ttk.Label(self, text="Start Kenneth Kasse", font=LARGEFONT)
+        label = ttk.Label(self, text="", font=LARGEFONT)
+        label.grid(row=0, column=1, padx=10, pady=10)
 
-        # putting the grid in its place by using
-        # grid
-        label.grid(row=0, column=2, padx=10, pady=10)
+        label = ttk.Label(self, text="Start Kenneth Kasse", font=LARGEFONT)
+        label.place(relx=.5, rely=0.05, anchor="c")
 
         button1 = ttk.Button(self, text="Start Game",
                              command=lambda: controller.show_frame(Page1))
@@ -79,8 +78,11 @@ class Page1(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = ttk.Label(self, text="Waiting for game to start", font=LARGEFONT)
+        label = ttk.Label(self, text="", font=LARGEFONT)
         label.grid(row=0, column=1, padx=10, pady=10)
+
+        label = ttk.Label(self, text="Venter på start", font=LARGEFONT)
+        label.place(relx=.5, rely=0.05, anchor="c")
 
         # button to show frame 2 with text
         # layout2
@@ -89,7 +91,7 @@ class Page1(tk.Frame):
 
         # putting the button in its place
         # by using grid
-        button1.grid(row=1, column=1, padx=10, pady=10)
+        button1.place(relx=.5, rely=0.15, anchor="c")
 
         # button to show frame 2 with text
         # layout2
@@ -98,13 +100,13 @@ class Page1(tk.Frame):
 
         # putting the button in its place by
         # using grid
-        button2.grid(row=2, column=1, padx=10, pady=10)
+        button2.place(relx=.5, rely=0.22, anchor="c")
 
         meme = Image.open('progmeme.png')
         meme = ImageTk.PhotoImage(meme)
         meme_lbl = tk.Label(self, image=meme)
         meme_lbl.image = meme
-        meme_lbl.grid(row=3, column=1, padx=10, pady=10)
+        meme_lbl.place(relx=.5, rely=0.7, anchor="c")
 
 
 # third window frame page2
@@ -113,18 +115,22 @@ class Page1(tk.Frame):
 class Page2(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = ttk.Label(self, text="Write a funny haha meme", font=LARGEFONT)
+
+        label = ttk.Label(self, text="", font=LARGEFONT)
         label.grid(row=0, column=1, padx=10, pady=10)
+
+        label = ttk.Label(self, text="Write a funny haha meme", font=LARGEFONT)
+        label.place(relx=.5, rely=0.05, anchor="c")
 
         meme = Image.open('work.jpg')
         w, h = meme.size
         if w > h:
             scale = w / h
-            w = int(200)
+            w = int(500)
             h = int(w / scale)
         elif w < h:
             scale = h / w
-            h = int(300)
+            h = int(450)
             w = int(h / scale)
         meme = meme.resize((w, h))
         meme = ImageTk.PhotoImage(meme)
@@ -160,11 +166,14 @@ class Page3(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
 
-        #label = ttk.Label(self, text="---Voting Time---", font=LARGEFONT)
 
         # putting the grid in its place by using
         # grid
-       # label.grid(row=0, column=1, padx=10, pady=10)
+        label = ttk.Label(self, text="", font=LARGEFONT)
+        label.grid(row=0, column=1, padx=10, pady=10)
+
+        label = ttk.Label(self, text="---Voting Time---", font=LARGEFONT)
+        label.place(relx=.5, rely=0.05, anchor="c")
 
         for x in range(players):
 
